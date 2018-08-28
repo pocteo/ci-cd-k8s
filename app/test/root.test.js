@@ -24,7 +24,7 @@ describe("Root Directory Test", function() {
     });
     it("should call send on resp with Hello World as a message", function() {
       rootResponder({}, resSpy, nextSpy);
-      resSpy.send.calledWith({ message: "hello sayarapp" }).should.be.true;
+      resSpy.send.calledWith({ message: "hello K8s" }).should.be.true;
     });
     it("should have json as the content type of the respones", function() {
       rootResponder({}, resSpy, nextSpy);

@@ -4,7 +4,7 @@ node{
   def Creds	= "2dfd9d0d-a300-49ee-aaaf-0a3efcaa5279"
   try{
   stage('Checkout'){
-      git credentialsId: '1a3b3eea-3c6b-4d8f-8c55-9268158537ed', url: 'https://mAyman2612@bitbucket.org/mAyman2612/sayarapp.git'
+      git 'https://mAyman2612@bitbucket.org/mAyman2612/ci-cd-k8s.git'
       sh "git rev-parse --short HEAD > .git/commit-id"
       imageTag= readFile('.git/commit-id').trim()
 
@@ -32,4 +32,3 @@ node{
       currentBuild.result = 'FAILURE'
     }
 }
-
