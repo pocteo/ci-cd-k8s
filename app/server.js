@@ -5,9 +5,9 @@ var rootResponder = require("./routes/root");
 
 server.get("/", rootResponder);
 
-server.listen(3000, function() {
-  console.log("restifyjs version %s running on port 3000", pkg.version);
+server.listen(3009, function() {
+  console.log("restifyjs version %s running on port 3009", pkg.version);
   setInterval(function() {
-    console.log("restifyjs version %s running on port 3000", pkg.version);
+    console.log("restifyjs version %s running on port 3009", pkg.version);
   }, 10000);
 });
