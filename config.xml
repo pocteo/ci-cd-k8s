@@ -1,34 +1,34 @@
-<?xml version='1.1' encoding='UTF-8'?>
-<flow-definition plugin="workflow-job@2.33">
-  <actions/>
-  <description></description>
-  <keepDependencies>false</keepDependencies>
-  <properties>
-    <com.coravy.hudson.plugins.github.GithubProjectProperty plugin="github@1.29.4">
-      <projectUrl>https://github.com/pocteo/ci-cd-k8s/</projectUrl>
-      <displayName></displayName>
-    </com.coravy.hudson.plugins.github.GithubProjectProperty>
-  </properties>
-  <definition class="org.jenkinsci.plugins.workflow.cps.CpsScmFlowDefinition" plugin="workflow-cps@2.72">
-    <scm class="hudson.plugins.git.GitSCM" plugin="git@3.10.1">
-      <configVersion>2</configVersion>
-      <userRemoteConfigs>
-        <hudson.plugins.git.UserRemoteConfig>
-          <url>https://github.com/pocteo/ci-cd-k8s.git</url>
-        </hudson.plugins.git.UserRemoteConfig>
-      </userRemoteConfigs>
-      <branches>
-        <hudson.plugins.git.BranchSpec>
-          <name>*/hello</name>
-        </hudson.plugins.git.BranchSpec>
-      </branches>
-      <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
-      <submoduleCfg class="list"/>
-      <extensions/>
-    </scm>
-    <scriptPath>Jenkinsfile</scriptPath>
-    <lightweight>false</lightweight>
-  </definition>
-  <triggers/>
-  <disabled>false</disabled>
-</flow-definition>
+ 1 <?xml version='1.1' encoding='UTF-8'?>
+  2 <flow-definition plugin="workflow-job@2.33">
+  3   <actions/>
+  4   <description></description>
+  5   <keepDependencies>false</keepDependencies>
+  6   <properties>
+  7     <com.coravy.hudson.plugins.github.GithubProjectProperty plugin="github@1.29.4">
+  8       <projectUrl>https://github.com/pocteo/ci-cd-k8s/</projectUrl>
+  9       <displayName></displayName>
+ 10     </com.coravy.hudson.plugins.github.GithubProjectProperty>
+ 11   </properties>
+ 12   <definition class="org.jenkinsci.plugins.workflow.cps.CpsScmFlowDefinition" plugin="workflow-cps@2.72">
+ 13     <scm class="hudson.plugins.git.GitSCM" plugin="git@3.10.1">
+ 14       <configVersion>2</configVersion>
+ 15       <userRemoteConfigs>
+ 16         <hudson.plugins.git.UserRemoteConfig>
+ 17           <url>https://github.com/pocteo/ci-cd-k8s.git</url>
+ 18         </hudson.plugins.git.UserRemoteConfig>
+ 19       </userRemoteConfigs>
+ 20       <branches>
+ 21         <hudson.plugins.git.BranchSpec>
+ 22           <name>*/master</name>
+ 23         </hudson.plugins.git.BranchSpec>
+ 24       </branches>
+ 25       <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
+ 26       <submoduleCfg class="list"/>
+ 27       <extensions/>
+ 28     </scm>
+ 29     <scriptPath>Jenkinsfile</scriptPath>
+ 30     <lightweight>false</lightweight>
+ 31   </definition>
+ 32   <triggers/>
+ 33   <disabled>false</disabled>
+ 34 </flow-definition>
