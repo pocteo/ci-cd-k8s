@@ -8,9 +8,9 @@
   gather_facts: no
   connection: local
   tasks:
-    - name: Create Namespace {{ Namespace }}
-      command: "kubectl create namespace {{ Namespace }}"
-      ignore_errors: yes
+    #- name: Create Namespace {{ Namespace }}
+    #  command: "kubectl create namespace {{ Namespace }}"
+    #  ignore_errors: yes
     - name: Deploy SayarApp
       command: "helm install --name=sayar-{{ Namespace }}  --namespace={{ Namespace }} ../sayarapp --set image.repository={{ ImageName }} --set image.tag={{ imageTag }} --set namespace={{ Namespace }}"
       delegate_to: localhost
