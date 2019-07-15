@@ -15,6 +15,6 @@ COPY . /usr/src/app
 
 
 # Expose for api
-EXPOSE 3000
+EXPOSE 3009
 
 CMD [ "pm2-docker", "start", "pm2.json"]
