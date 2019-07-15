@@ -16,5 +16,5 @@ spec:
       - name: hello-kubernetes
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
         ports:
-        - containerPort: 3000
+        - containerPort: 3009
         imagePullPolicy: Always
