@@ -1,7 +1,7 @@
 node{
   def Namespace = "default"
   def ImageName = "pocteo/cicd"
-  def Creds	= "6243a3a3-e2af-4b2e-a75d-e3b1ac4adb6c"
+  def Creds	= "pocteo_docker_hub"
   try{
     stage('Checkout'){
       git 'https://github.com/pocteo/ci-cd-k8s.git'
@@ -18,9 +18,9 @@ node{
         sh "docker push ${ImageName}"
       }
     }
-    stage('Deploy on K8s'){
-      sh "ansible-playbook /var/lib/jenkins/cicd/ansible/deploy.yml  --user=jenkins --extra-vars ImageName=${ImageName} --extra-vars imageTag=${imageTag} --extra-vars Namespace=${Namespace}"
-    }
+    //stage('Deploy on K8s'){
+      //sh "ansible-playbook /var/lib/jenkins/cicd/ansible/deploy.yml  --user=jenkins --extra-vars ImageName=${ImageName} --extra-vars imageTag=${imageTag} --extra-vars Namespace=${Namespace}"
+    //}
   } catch (err) {
     currentBuild.result = 'FAILURE'
   }
