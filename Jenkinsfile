@@ -4,7 +4,7 @@ node{
   def Creds	= "pocteo_docker_hub"
   try{
     stage('Checkout'){
-      git 'https://github.com/pocteo/ci-cd-k8s.git'
+      git(url: "https://github.com/pocteo/ci-cd-k8s.git", branch: "${ghprbSourceBranch}")
       sh "git rev-parse --short HEAD > .git/commit-id"
       imageTag = readFile('.git/commit-id').trim()
     } 
