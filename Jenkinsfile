@@ -18,9 +18,9 @@ node{
         sh "docker push ${ImageName}"
       }
     }
-    //stage('Deploy on K8s'){
-      //sh "ansible-playbook /var/lib/jenkins/cicd/ansible/deploy.yml  --user=jenkins --extra-vars ImageName=${ImageName} --extra-vars imageTag=${imageTag} --extra-vars Namespace=${Namespace}"
-    //}
+    stage('Deploy on K8s'){
+      sh "ansible-playbook /var/lib/jenkins/cicd/ansible/deploy.yml  --user=jenkins --extra-vars ImageName=${ImageName} --extra-vars imageTag=${imageTag} --extra-vars Namespace=${Namespace}"
+    }
   } catch (err) {
     currentBuild.result = 'FAILURE'
   }
