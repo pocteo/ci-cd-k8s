@@ -15,9 +15,6 @@ node{
     stage('Docker Build') {
       sh "docker build -t ${ImageName}:${imageTag} ."
     }
-    stage('Scan docker image') {
-      aquaMicroscanner imageName: "${ImageName}:${imageTag}", notCompliesCmd: 'exit 1', onDisallowed: 'fail'
-    }
     stage('Docker Build, Push'){
       withDockerRegistry([credentialsId: "${Creds}", url: 'https://index.docker.io/v1/']) {        
         sh "docker push ${ImageName}"
