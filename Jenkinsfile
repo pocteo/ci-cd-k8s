@@ -15,16 +15,13 @@ node{
     stage('Docker Build') {
       sh "docker build -t ${ImageName}:${imageTag} ."
     }
-    stage('Scan docker image') {
-      aquaMicroscanner imageName: "${ImageName}:${imageTag}", notCompliesCmd: 'exit 1', onDisallowed: 'fail'
-    }
     stage('Docker Build, Push'){
       withDockerRegistry([credentialsId: "${Creds}", url: 'https://index.docker.io/v1/']) {        
         sh "docker push ${ImageName}"
       }
     }    
     stage('Deploy on K8s'){
-      sh "ansible-playbook /var/lib/jenkins/cicd/ansible/deploy.yml  --user=jenkins --extra-vars ImageName=${ImageName} --extra-vars imageTag=${imageTag} --extra-vars Namespace=${Namespace}"
+      sh "ansible-playbook /var/lib/jenkins/ci-cd-k8s/ansible/sayarapp-deploy/deploy.yml  --user=jenkins --extra-vars ImageName=${ImageName} --extra-vars imageTag=${imageTag} --extra-vars Namespace=${Namespace}"
     }
   } catch (err) {
     currentBuild.result = 'FAILURE'
